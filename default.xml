@@ -1107,4 +1107,7 @@
 
   <!-- FIRST: Add/Replace repos and particular directories needed by TWRP -->
   <include name="twrp-default.xml"/>
+
+  <!-- HARP - add/replace our modified repos -->
+  <include name="harp.xml"/>
 </manifest>
