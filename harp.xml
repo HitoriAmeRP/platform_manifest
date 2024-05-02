@@ -2,6 +2,8 @@
 <manifest>
     <remote name="HARP"
             fetch="https://github.com/HitoriAmeRP" />
+    <remote name="ProtonAOSP"
+            fetch="https://github.com/ProtonAOSP" />
 
     <!-- TWRP removes -->
     <remove-project name="android_bootable_recovery" />
@@ -36,4 +38,6 @@
 
     <project path="art" name="platform_art" remote="HARP" revision="android-12.1"/>
     <project path="bionic" name="platform_bionic" remote="HARP" revision="android-12.1"/>
+
+    <project path="external/jemalloc_new" name="android_external_jemalloc_new" remote="ProtonAOSP" revision="sc-qpr3"/>
 </manifest>
