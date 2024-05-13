@@ -1,10 +1,39 @@
+## Getting Started ##
+To get started with AOSP sources to build HARP, you'll need to get familiar
+with [Git and Repo](https://source.android.com/source/using-repo.html).
+
+To initialize your local repository using the AOSP trees to build TWRP, use a command like this:
+
+    repo init -u https://github.com/HitoriAmeRP/platform_manifest.git -b android-12.1
+
+To initialize a shallow clone, which will save some space, use a command like this:
+
+    repo init --depth=1 -u https://github.com/HitoriAmeRP/platform_manifest.git -b android-12.1
+
+Then to sync up:
+
+    repo sync
+
+Then to setup the build:
+
+     cd <source-dir>; export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_<device>-eng
+
+The build target is dependent on the device, and should reflect the location of stock recovery on the device. Issue the build command that applies to your device:
+- Recovery partition: `mka recoveryimage`
+- Boot image ramdisk: `mka bootimage`
+- Vendor_boot image ramdisk: `mka vendorbootimage`
+
+### Special notes for this branch
+- Device makefile in the device tree and dependencies file should use the "twrp" prefix.
+- FDE decryption is not presently supported in this branch.
+
 ## Submitting Patches ##
 Our project is open source, and patches are always welcome!
 You can send patches by using:
 
 Pull request, right here on git.
 
-Contact us at https://rebrand.ly/teamwin-recovery-zulip-community
+Contact us at https://t.me/t25_discussions
 
 ## Maintaining Authorship ##
 Maintaining authorship is a very important aspect of working with Open Source code. If you wish to submit a patch/fix
@@ -37,32 +66,3 @@ git commit --author="Author <email@address.com>" -m "[commit message]"
 This saves time, and when part of your normal routine, prevents the infamous "ermahgerd I forgot to add authorship - let
 me fix it because I was found out!" message.
 
-
-## Getting Started ##
-To get started with AOSP sources to build TWRP, you'll need to get familiar
-with [Git and Repo](https://source.android.com/source/using-repo.html).
-
-To initialize your local repository using the AOSP trees to build TWRP, use a command like this:
-
-    repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
-
-To initialize a shallow clone, which will save even more space, use a command like this:
-
-    repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
-
-Then to sync up:
-
-    repo sync
-
-Then to setup the build:
-
-     cd <source-dir>; export ALLOW_MISSING_DEPENDENCIES=true; . build/envsetup.sh; lunch twrp_<device>-eng
-
-The build target is dependent on the device, and should reflect the location of stock recovery on the device. Issue the build command that applies to your device:
-- Recovery partition: `mka recoveryimage`
-- Boot image ramdisk: `mka bootimage`
-- Vendor_boot image ramdisk: `mka vendorbootimage`
-
-### Special Notes for this branch
-- Device makefile in the device tree and dependencies file should use the "twrp" prefix.
-- FDE decryption is not presently supported in this branch.
